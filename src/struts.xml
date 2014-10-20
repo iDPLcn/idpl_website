@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!--表示可以使用动态方法调用，即userAction!delete.action的形式-->
+    <constant name="struts.enable.DynamicMethodInvocation" value="true" />
+    <!--表示struts处于开发状态-->
+    <constant name="struts.devMode" value="true" />
+	<!--使用默认的命名空间、即根目录/，在访问的时候，直接http://localhost:8080/webShopping/userAction!delete.action-->
+    <package name="default"  extends="struts-default">
+        <action name="experiment"  class="com.bed.action.ExperimentAction">
+            <result name="success">/test.jsp</result>
+        </action>
+        
+        <action name="login" class="com.bed.action.LoginAction">
+        	<result name="true">/experiment.jsp</result>
+        	<result name="false">/login.html</result>
+        </action>
+        
+        <action name="test" class="com.bed.action.TestAction">
+        	<result name="success">/result.jsp</result>
+        	<result name="fail">/test.jsp</result>
+        </action>
+     </package>
+</struts>
