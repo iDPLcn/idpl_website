@@ -10,17 +10,41 @@
 	<!--使用默认的命名空间、即根目录/，在访问的时候，直接http://localhost:8080/webShopping/userAction!delete.action-->
     <package name="default"  extends="struts-default">
         <action name="experiment"  class="com.bed.action.ExperimentAction">
-            <result name="success">/test.jsp</result>
+            <result name="success">/testShow.jsp</result>
+            <result name="fail">/login.html</result>
         </action>
         
         <action name="login" class="com.bed.action.LoginAction">
         	<result name="true">/experiment.jsp</result>
         	<result name="false">/login.html</result>
         </action>
+             
+        <action name="add" class="com.bed.action.AddAction">
+        	<result name="success">/test.jsp</result>
+        	<result name="fail">/login.html</result>
+        </action>
         
         <action name="test" class="com.bed.action.TestAction">
-        	<result name="success">/result.jsp</result>
-        	<result name="fail">/test.jsp</result>
+        	<result name="success" type="chain">showTest</result>
+        	<result name="fail">/login.jsp</result>
+        </action>
+        
+        <action name="showTest" class="com.bed.action.ShowTestAction">
+        	<result name="success">/testShow.jsp</result>
+        	<result name="fail">/experiment.jsp</result>
+        	<result name="login">/login.html</result>
+        </action>
+        
+        <action name="submitExperiment" class="com.bed.action.SubmitAction">
+        	<result name="success">/submitSuccess.jsp</result>
+        	<result name="fail">/submitFail.jsp</result>
+        	<result name="login">/login.html</result>
+        </action>
+        
+        <action name="showExperiment" class="com.bed.action.ShowExperimentAction">
+        	<result name="success">/experimentShow.jsp</result>
+        	<result name="fail">/experiment.jsp</result>
+        	<result name="login">/login.html</result>
         </action>
      </package>
 </struts>

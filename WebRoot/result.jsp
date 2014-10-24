@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
+<%-- <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8" import="java.util.*,java.text.SimpleDateFormat"%>
 <%@ page import="com.bed.dao.*" %>
 <%@ page import="java.net.*" %>
@@ -551,3 +551,4 @@
  <!--  <div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div> -->
 </body>
 </html>
+ --%>

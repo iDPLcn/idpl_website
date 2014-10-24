@@ -78,7 +78,6 @@
 	/* ---------------------------------------------------------------------- */
 	
 	$(document).ready( function() {   
-		
 		/* draw flot charts */
 		setup_flots();
 		
@@ -98,10 +97,83 @@
 		execute_idevice_functions();	
 		
 		/* detect if mobile */
-		isMobile() 
+		isMobile(); 
 		
 		/* all buttons */
-		setup_all_buttons()
+		setup_all_buttons();
+        
+        /* draw easy pie */
+  		//setup_easypie();
+		
+		/* activate sparklines */
+		setup_sparklines();
+		
+		/*progress bar animate*/
+		progressbar_animate();
+		
+		/* wysihtml5 editor*/
+		setup_wysihtml5();
+		
+		/* start justguage */
+		setup_jarvisGuage();
+		
+		/* start chatbox */
+		setup_chatbox_demo();
+		
+		/* start bootbox */
+		setup_bootbox_demo();
+		
+		/* datepicker for forms */
+		setup_datepicker_demo();
+		
+		/* colorpicker for forms */
+		setup_colorpicker_demo();
+		
+		/* masked input */
+		setup_masked_input();
+		
+		/* setup_timepicker */
+		setup_timepicker();
+		
+		/* setup_uislider */
+		setup_uislider();
+		
+		/* validation_setup_demo */
+		validation_setup_demo();
+		
+		/* wizard demo */
+		setup_wizard_demo();	
+    
+    	/* ibutton */
+    	setup_ios_button_demo();
+		
+		/* tables with checked in checkboxes */
+		setup_checkedin_tables_demo();
+
+	}); 
+	function AddExperiment(){
+		setup_flots();
+		
+		/* draw calendar */
+		setup_calendar();
+		
+		/* find #second-menu-js and apply accordion menu function */
+		setup_accordion_menu();
+		
+		/* setup toastr responsive alerts */
+		setup_toastr();
+		
+		/* slimscroll */
+		setup_slimscroll();
+
+		/* expand search input on focus */
+		execute_idevice_functions();	
+		
+		/* detect if mobile */
+		isMobile(); 
+		
+		/* all buttons */
+		setup_all_buttons();
         
         /* draw easy pie */
   		setup_easypie();
@@ -150,9 +222,7 @@
 		
 		/* tables with checked in checkboxes */
 		setup_checkedin_tables_demo();
-
-	}); 
-
+	}
 	/* end on page load */
 	
 	/* ---------------------------------------------------------------------- */
@@ -1941,6 +2011,7 @@
 			$("#uislider-demo").validate({
 				rules : {
 					testName : "required",
+					experimentName : "required",
 					minString : {
 						required : true,
 						minlength : 3
@@ -2017,6 +2088,7 @@
 			$("#validate-demo-js").validate({
 				rules : {
 					testName : "required",
+					experiment : "required",
 					minString : {
 						required : true,
 						minlength : 3

@@ -23,6 +23,7 @@ public class Record {
 	private String StartRunning;  //数据实际开始传输时间
 	private String CompletedTime; //数据实际结束传输时间
 	private String State;         //数据传输状态
+	private long experimentId;
 	public long getRecordId(){     //得到实验记录ID
 		return this.recordId;
 	}
@@ -85,7 +86,9 @@ public class Record {
 	public String getState(){        //得到数据传输作业状态
 		return this.State;
 	}
-	
+	public long getExperimentId(){
+		return this.experimentId;
+	}
 
 	public void setRecordId(long id){           //设置实验记录ID
 		this.recordId=id;
@@ -147,5 +150,8 @@ public class Record {
 	public void setState(String state)         //设置数据传输状态
 	{
 		this.State=state;
+	}
+	public void setExperimentId(long experimentId){
+		this.experimentId=experimentId;
 	}
 }

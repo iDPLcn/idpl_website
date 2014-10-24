@@ -57,7 +57,7 @@
     <link rel="stylesheet" id="switch-width" href="css/full-width.css?v=1" />
     
 	<!-- Webfonts -->
-	<!--  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lato:300,400,700' type='text/css' />-->
+	<!-- <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lato:300,400,700' type='text/css' /> -->
 	
 	<!-- All javascripts are located at the bottom except for HTML5 Shim -->
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -67,15 +67,15 @@
    	<![endif]-->
 
 	<!-- For Modern Browsers -->
-	<!-- <link rel="shortcut icon" href="img/favicons/favicon.png" /> -->
+	<link rel="shortcut icon" href="img/favicons/favicon.png" />
 	<!-- For everything else -->
-	<!-- <link rel="shortcut icon" href="img/favicons/favicon.ico" /> -->
+	<link rel="shortcut icon" href="img/favicons/favicon.ico" />
 	<!-- For retina screens -->
-	<!-- <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/favicons/apple-touch-icon-retina.png" /> -->
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/favicons/apple-touch-icon-retina.png" />
 	<!-- For iPad 1-->
-	<!-- <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/favicons/apple-touch-icon-ipad.png" /> -->
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/favicons/apple-touch-icon-ipad.png" />
 	<!-- For iPhone 3G, iPod Touch and Android -->
-	<!-- <link rel="apple-touch-icon-precomposed" href="img/favicons/apple-touch-icon.png" /> -->
+	<link rel="apple-touch-icon-precomposed" href="img/favicons/apple-touch-icon.png" />
 	
 	<!-- iOS web-app metas -->
 	<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -132,7 +132,7 @@
 			<div class="contained">
 				<!-- aside -->	
 				<aside>	
-					
+									
 					<!-- aside item: Mini profile -->
 					<div class="my-profile">
 						<a href="javascript:void(0)" class="my-profile-pic">
@@ -198,34 +198,25 @@
 				
 				<!-- main content -->
 				<div id="page-content">
+					
 					<!-- page header -->
+					<h1 id="page-header">Experiment Result</h1>
 					
-					
-					<div class="fluid-container">
-						
-						<!-- wizard steps -->
-						<ul class="bwizard-steps">
-							<li class="active">
-									<span class="label badge-inverse">1</span>
-									<a href="#inverse-tab1" data-toggle="tab">Step 1: Create An Experiment</a>
-							</li>
-							<li>
-									<span class="label badge-inverse">2</span>
-									<a>Step 2</a>
-							</li>
-							<li>
-									<span class="label badge-inverse">3</span>
-									<a>Step 3</a>
-							</li>
-						</ul>
-						<!-- end wizard steps -->	
-						
-						
+					<div class="fluid-container">			
+						<!-- invoice -->
+						<div id="invoice-bar" class="btn-toolbar">
+							<div class="btn-group">
+								<a href="experiment.jsp"><button type="button" class="btn medium"><i class="cus-add"></i> Add Experiments</button></a>
+								<a href="showExperiment"><button type="button" class="btn medium"><i class="cus-arrow-refresh"></i> Refresh</button></a>
+							</div>
+						</div>
+						<!-- invoice end -->
 						
 						<!-- widget grid -->
 						<section id="widget-grid" class="">
 							
 							<!-- row-fluid -->
+							<s:iterator id="experiment" value="experimentList">
 							
 							<div class="row-fluid">
 								<article class="span12">
@@ -235,65 +226,51 @@
 									        <h2></h2>                           
 									    </header>
 									    <!-- wrap div -->
-									    <div>
-       
+									    <div class="content">
+									    
+									        <%-- <div class="jarviswidget-editbox">
+									            <div>
+									                <label>Title:</label>
+									                <input type="text" />
+									            </div>
+									            <div>
+									                <label>Styles:</label>
+									                <span data-widget-setstyle="purple" class="purple-btn"></span>
+									                <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
+									                <span data-widget-setstyle="green" class="green-btn"></span>
+									                <span data-widget-setstyle="yellow" class="yellow-btn"></span>
+									                <span data-widget-setstyle="orange" class="orange-btn"></span>
+									                <span data-widget-setstyle="pink" class="pink-btn"></span>
+									                <span data-widget-setstyle="red" class="red-btn"></span>
+									                <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
+									                <span data-widget-setstyle="black" class="black-btn"></span>
+									            </div>
+									        </div> --%>
+            
 									        <div class="inner-spacer"> 
 									        <!-- content goes here -->
-												<form class="form-horizontal themed" id="uislider-demo" action="experiment"  method="post" novalidate="novalidate">
-													<fieldset>
-														<div class="control-group">
-															<label class="control-label" for="input01">Experiment Name</label>
-															<div class="controls">
-																<input type="text" class="span12" name="experimentName" id="experimentName" />
-															</div>
-														</div>
-														
-														<div class="control-group" id="timepicker-demo">
-															<label class="control-label">Time (Start)</label>
-															<div class="controls">
-																
-																<div class="input-append date" id="datepicker-js" data-date-format="yyyy-mm-dd">
-																	<input id="timeStart_date" name="timeStart_date" class="datepicker-input" size="16" type="text" value="" placeholder="Select a date" />
-																	<span class="add-on"><i class="cus-calendar-2"></i></span>
-																</div>
-																
-																
-																<div class="input-append bootstrap-timepicker-component">
-														           	<input id="timeStart_time" name="timeStart_time" type="text" class="timepicker-input" value="" />
-														            <span class="add-on"><i class="cus-clock"></i></span>
-														        </div>
-																
-															</div>
-														</div>
-														
-														<div class="control-group" id="timepicker-demo">
-															<label class="control-label">Time (End)</label>
-															<div class="controls">
-																
-																<div class="input-append date" id="datepicker-js" data-date-format="yyyy-mm-dd">
-																	<input id="timeEnd_date" name="timeEnd_date" class="datepicker-input" size="16" type="text" value="" placeholder="Select a date" />
-																	<span class="add-on"><i class="cus-calendar-2"></i></span>
-																</div>
-																
-																
-																<div class="input-append bootstrap-timepicker-component">
-														           	<input id="timeEnd_time" name="timeEnd_time" type="text" class="timepicker-input" value="" />
-														            <span class="add-on"><i class="cus-clock"></i></span>
-														        </div>
-																
-															</div>
-														</div>
-
-														<div class="form-actions">
-															<button type="reset" class="btn medium btn-danger">
-																Cancel
-															</button>
-															<button type="submit" class="btn medium btn-primary">
-																Continue
-															</button>
-														</div>
-													</fieldset>
-												</form>
+												
+												<table class="table table-bordered table-striped responsive" id="s-table">
+														<thead>
+															<tr>
+																<th>Experiment name</th>
+																<th>Start Time</th>
+																<th>End Time</th>
+																<th>Date</th>
+																<th>Submit</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr>
+																<td>${experiment.experimentName}</td>
+																<td>${experiment.timeStart }</td>
+																<td>${experiment.timeEnd }</td>
+																<td>${experiment.date }</td>
+																<td>${experiment.submit }</td>
+															</tr>
+														</tbody>
+												</table>
+										        	
 										    </div>
 										    <!-- end content-->
 									    </div>
@@ -303,6 +280,7 @@
 								</article>
 							</div>
 							
+							</s:iterator>
 							<!-- end row-fluid -->
 							
 						</section>
@@ -338,7 +316,6 @@
     <!--================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     
-   <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script> -->
     <script src="js/libs/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/libs/jquery.min.js"><\/script>')</script>
@@ -360,8 +337,8 @@
     <script src="js/include/slimScroll.min.js"></script>
 	
 	<!-- REQUIRED: Datatable components -->
-	<!-- DISABLED <script src="js/include/jquery.dataTables.min.js"></script> -->
-	<!-- DISABLED <script src="js/include/DT_bootstrap.min.js"></script> -->
+	<script src="js/include/jquery.dataTables.min.js"></script>
+	<script src="js/include/DT_bootstrap.min.js"></script>
 
 	<script type="text/javascript">
 		var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));	
@@ -371,10 +348,10 @@
 	    	
 	    	/* REQUIRED: Datatable PDF/Excel output componant */
 	    	
-	    	/*-- document.write('<script src="js/include/ZeroClipboard.min.js"><\/script>'); --*/
-	    	/*-- document.write('<script src="js/include/TableTools.min.js"><\/script>'); --*/
-	    	document.write('<script src="js/include/jquery.uniform.min.js"><\/script>'); 
-	    	document.write('<script src="js/include/select2.min.js"><\/script>'); 
+	    	document.write('<script src="js/include/ZeroClipboard.min.js"><\/script>');
+	    	document.write('<script src="js/include/TableTools.min.js"><\/script>');
+	    	document.write('<script src="js/include/jquery.uniform.min.js"><\/script>');
+	    	/*-- document.write('<script src="js/include/select2.min.js"><\/script>'); --*/
 	    	document.write('<script src="js/include/jquery.excanvas.min.js"><\/script>');
 	    	document.write('<script src="js/include/jquery.placeholder.min.js"><\/script>');
 	    }else{
@@ -387,22 +364,22 @@
 	</script>
 
     <!-- REQUIRED: iButton -->
-    <!-- DISABLED <script src="js/include/jquery.ibutton.min.js"></script> --> 
-    
-    <!-- REQUIRED: Justgage animated charts -->
+    <!-- DISABLED <script src="js/include/jquery.ibutton.min.js"></script> -->
+	
+	<!-- REQUIRED: Justgage animated charts -->
     <!-- DISABLED <script src="js/include/justgage.min.js"></script> -->
     <!-- DISABLED <script src="js/include/raphael.2.1.0.min.js"></script> -->
     
     <!-- REQUIRED: Animated pie chart -->
-    <%-- <script src="js/include/jquery.easy-pie-chart.min.js"></script> --%>
+    <!-- DISABLED <script src="js/include/jquery.easy-pie-chart.min.js"></script> -->
     
     <!-- REQUIRED: Functional Widgets -->
     <script src="js/include/jarvis.widget.min.js"></script>
     <script src="js/include/mobiledevices.min.js"></script>
     <!-- DISABLED (only needed for IE7 <script src="js/include/json2.js"></script> -->
 	
-    <!-- REQUIRED: Full Calendar -->
-    <!-- DISABLED <script src="js/include/jquery.fullcalendar.min.js"></script> -->		
+	<!-- REQUIRED: Full Calendar -->
+    <script src="js/include/jquery.fullcalendar.min.js"></script>		
     
     <!-- REQUIRED: Flot Chart Engine -->
     <!-- DISABLED <script src="js/include/jquery.flot.cust.min.js"></script> -->			
@@ -410,13 +387,10 @@
     <!-- DISABLED <script src="js/include/jquery.flot.tooltip.min.js"></script> -->		
     <!-- DISABLED <script src="js/include/jquery.flot.orderBar.min.js"></script> -->	
     <!-- DISABLED <script src="js/include/jquery.flot.fillbetween.min.js"></script> -->	
-    <!-- DISABLED <script src="js/include/jquery.flot.pie.min.js"></script> --> 	 
+    <!-- DISABLED <script src="js/include/jquery.flot.pie.min.js"></script> --> 		
     
     <!-- REQUIRED: Sparkline Charts -->
-    <%-- <script src="js/include/jquery.sparkline.min.js"></script> --%>
-    
-    <!-- REQUIRED: Form validation plugin -->
-    <script src="js/include/jquery.validate.min.js"></script>
+    <script src="js/include/jquery.sparkline.min.js"></script>
 
 	<!-- REQUIRED: Infinite Sliding Menu (used with inbox page) -->
 	<!-- DISABLED  <script src="js/include/jquery.inbox.slashc.sliding-menu.js"></script> -->
@@ -425,37 +399,32 @@
     <!-- DISABLED <script src="js/include/jquery.validate.min.js"></script> -->
     
     <!-- REQUIRED: Progress bar animation -->
-    <%-- <script src="js/include/bootstrap-progressbar.min.js"></script> --%>
+    <!-- DISABLED  <script src="js/include/bootstrap-progressbar.min.js"></script> -->
     
     <!-- REQUIRED: wysihtml5 editor -->
-    <script src="js/include/wysihtml5-0.3.0.min.js"></script>
-    <script src="js/include/bootstrap-wysihtml5.min.js"></script>
+    <!-- DISABLED  <script src="js/include/wysihtml5-0.3.0.min.js"></script> -->
+    <!-- DISABLED  <script src="js/include/bootstrap-wysihtml5.min.js"></script> -->
 
 	<!-- REQUIRED: Masked Input -->
-    <script src="js/include/jquery.maskedinput.min.js"></script>
+    <!-- DISABLED  <script src="js/include/jquery.maskedinput.min.js"></script> -->
     
     <!-- REQUIRED: Bootstrap Date Picker -->
-    <script src="js/include/bootstrap-datepicker.min.js"></script>
+   	<script src="js/include/bootstrap-datepicker.min.js"></script>
     
     <!-- REQUIRED: Bootstrap Wizard -->
     <!-- DISABLED  <script src="js/include/bootstrap.wizard.min.js"></script> -->
     
 	<!-- REQUIRED: Bootstrap Color Picker -->
-    <script src="js/include/bootstrap-colorpicker.min.js"></script>
+    <!-- DISABLED  <script src="js/include/bootstrap-colorpicker.min.js"></script> -->
     
 	<!-- REQUIRED: Bootstrap Time Picker -->
-    <script src="js/include/bootstrap-timepicker.min.js"></script>
-    
-    <!-- REQUIRED: Bootstrap Prompt -->
-    <!-- DISABLED  <script src="js/include/bootbox.min.js"></script> -->
+    <!-- DISABLED  <script src="js/include/bootstrap-timepicker.min.js"></script> -->
     
     <!-- REQUIRED: Bootstrap engine -->
     <script src="js/include/bootstrap.min.js"></script>
     
     <!-- DO NOT REMOVE: Theme Config file -->
     <script src="js/config.js"></script>
-    
-    <%-- <script src="js/dataplace.js"></script> --%>
     
     <!-- d3 library placed at the bottom for better performance -->
     <!-- DISABLED  <script src="js/include/d3.v3.min.js"></script> -->
@@ -468,6 +437,6 @@
     <!-- DISABLED <script src="js/include/adv_charts/geochart.js"></script> -->
     
     <!-- end scripts -->
-  <div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
+  <%-- <div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div> --%>
 </body>
 </html>

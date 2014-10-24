@@ -67,15 +67,15 @@
    	<![endif]-->
 
 	<!-- For Modern Browsers -->
-	<link rel="shortcut icon" href="img/favicons/favicon.png" />
+	<!-- <link rel="shortcut icon" href="img/favicons/favicon.png" /> -->
 	<!-- For everything else -->
-	<link rel="shortcut icon" href="img/favicons/favicon.ico" />
+	<!-- <link rel="shortcut icon" href="img/favicons/favicon.ico" /> -->
 	<!-- For retina screens -->
-	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/favicons/apple-touch-icon-retina.png" />
+	<!-- <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/favicons/apple-touch-icon-retina.png" /> -->
 	<!-- For iPad 1-->
-	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/favicons/apple-touch-icon-ipad.png" />
+	<!-- <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/favicons/apple-touch-icon-ipad.png" /> -->
 	<!-- For iPhone 3G, iPod Touch and Android -->
-	<link rel="apple-touch-icon-precomposed" href="img/favicons/apple-touch-icon.png" />
+	<!-- <link rel="apple-touch-icon-precomposed" href="img/favicons/apple-touch-icon.png" /> -->
 	
 	<!-- iOS web-app metas -->
 	<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -158,10 +158,10 @@
 								<a href="javascript:void(0)"><i class="icon-check"></i>Experiment<span class="badge">2</span></a>
 								<ul>
 									<li>
-										<a href="./test.jsp" class="expanded">Create</a>
+										<a href="./experiment.jsp" class="expanded">Create</a>
 									</li>
 									<li>
-										<a href="./result.jsp">Result</a>
+										<a href="showExperiment">Result</a>
 									</li>
 								</ul>
 							</li>
@@ -197,9 +197,9 @@
 				<!-- aside end -->
 				
 				<!-- main content -->
-				<div id="page-content">
+				<div id="page-content">	
 					<!-- page header -->
-					<h1 id="page-header">${expName}</h1>	
+					<%-- <h1 id="page-header">${expName}</h1> --%>	
 					
 					<div class="fluid-container">
 						
@@ -211,7 +211,7 @@
 							<div class="row-fluid">
 								<article class="span12">
 									<!-- new widget -->
-									<div class="jarviswidget jarviswidget-sortable" id="widget-id-0" data-widget-deletebutton="false" role="widget">
+									<div class="jarviswidget jarviswidget-sortable" id="widget-id-0" data-widget-deletebutton="false" data-widget-editbutton="false" role="widget">
 									    <header>
 									        <h2></h2>                           
 									    </header>
@@ -239,7 +239,7 @@
             
 									        <div class="inner-spacer"> 
 									        <!-- content goes here -->
-												<form  class="form-horizontal themed" id="uislider-demo" action="test"  method="post" novalidate="novalidate">
+												<form  class="form-horizontal themed" id="uislider-demo" action="test?experimentId=${experimentId}"  method="post" novalidate="novalidate">
 													<fieldset>
 														<div class="control-group">
 															<label class="control-label" for="input01">Experiment Name</label>
@@ -261,7 +261,7 @@
 															<div class="controls">
 																<select name="method" class="span12 with-search">
 													                <option value="FTP">FTP</option>
-																	<option value="SCP">SCP</option>
+																	<!-- <option value="SCP">SCP</option> -->
 														        </select>
 															</div>
 														</div>
@@ -351,6 +351,7 @@
 															</div>
 														</div>
 														
+														<%-- 
 														<div class="control-group" id="timepicker-demo">
 															<label class="control-label">Time (Start)</label>
 															<div class="controls">
@@ -385,14 +386,15 @@
 														        </div>
 																
 															</div>
-														</div>
+														</div> 
+														--%>
 
 														<div class="form-actions">
 															<button type="reset" class="btn medium btn-danger">
 																Cancel
 															</button>
 															<button type="submit" class="btn medium btn-primary">
-																Save changes
+																Submit
 															</button>
 														</div>
 													</fieldset>

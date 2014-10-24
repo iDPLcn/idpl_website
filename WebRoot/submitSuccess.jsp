@@ -205,17 +205,17 @@
 						
 						<!-- wizard steps -->
 						<ul class="bwizard-steps">
-							<li class="active">
+							<li>
 									<span class="label badge-inverse">1</span>
-									<a href="#inverse-tab1" data-toggle="tab">Step 1: Create An Experiment</a>
+									<a href="#inverse-tab1" data-toggle="tab">Step 1</a>
 							</li>
 							<li>
 									<span class="label badge-inverse">2</span>
 									<a>Step 2</a>
 							</li>
-							<li>
+							<li class="active">
 									<span class="label badge-inverse">3</span>
-									<a>Step 3</a>
+									<a>Step 3: Result</a>
 							</li>
 						</ul>
 						<!-- end wizard steps -->	
@@ -228,79 +228,17 @@
 							<!-- row-fluid -->
 							
 							<div class="row-fluid">
-								<article class="span12">
-									<!-- new widget -->
-									<div class="jarviswidget jarviswidget-sortable" id="widget-id-0" data-widget-deletebutton="false" data-widget-editbutton="false" role="widget">
-									    <header>
-									        <h2></h2>                           
-									    </header>
-									    <!-- wrap div -->
-									    <div>
-       
-									        <div class="inner-spacer"> 
-									        <!-- content goes here -->
-												<form class="form-horizontal themed" id="uislider-demo" action="experiment"  method="post" novalidate="novalidate">
-													<fieldset>
-														<div class="control-group">
-															<label class="control-label" for="input01">Experiment Name</label>
-															<div class="controls">
-																<input type="text" class="span12" name="experimentName" id="experimentName" />
-															</div>
-														</div>
-														
-														<div class="control-group" id="timepicker-demo">
-															<label class="control-label">Time (Start)</label>
-															<div class="controls">
-																
-																<div class="input-append date" id="datepicker-js" data-date-format="yyyy-mm-dd">
-																	<input id="timeStart_date" name="timeStart_date" class="datepicker-input" size="16" type="text" value="" placeholder="Select a date" />
-																	<span class="add-on"><i class="cus-calendar-2"></i></span>
-																</div>
-																
-																
-																<div class="input-append bootstrap-timepicker-component">
-														           	<input id="timeStart_time" name="timeStart_time" type="text" class="timepicker-input" value="" />
-														            <span class="add-on"><i class="cus-clock"></i></span>
-														        </div>
-																
-															</div>
-														</div>
-														
-														<div class="control-group" id="timepicker-demo">
-															<label class="control-label">Time (End)</label>
-															<div class="controls">
-																
-																<div class="input-append date" id="datepicker-js" data-date-format="yyyy-mm-dd">
-																	<input id="timeEnd_date" name="timeEnd_date" class="datepicker-input" size="16" type="text" value="" placeholder="Select a date" />
-																	<span class="add-on"><i class="cus-calendar-2"></i></span>
-																</div>
-																
-																
-																<div class="input-append bootstrap-timepicker-component">
-														           	<input id="timeEnd_time" name="timeEnd_time" type="text" class="timepicker-input" value="" />
-														            <span class="add-on"><i class="cus-clock"></i></span>
-														        </div>
-																
-															</div>
-														</div>
-
-														<div class="form-actions">
-															<button type="reset" class="btn medium btn-danger">
-																Cancel
-															</button>
-															<button type="submit" class="btn medium btn-primary">
-																Continue
-															</button>
-														</div>
-													</fieldset>
-												</form>
-										    </div>
-										    <!-- end content-->
-									    </div>
-									    <!-- end wrap div -->
-									</div>
-									<!-- end widget -->
-								</article>
+								<div class="span12">
+									<div class="alert alert-success adjusted alert-block">
+											<h1 class="alert-heading">Success</h1>
+											<h4>
+												You have created an experiment successfully!
+											</h4>
+											<button class="btn btn-small btn-success" style="margin-top:20px">
+												Show Experiment Result
+											</button>
+										</div>
+								</div>
 							</div>
 							
 							<!-- end row-fluid -->

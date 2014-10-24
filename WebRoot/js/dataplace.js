@@ -7,7 +7,7 @@ function method_change(){
 		methodSelect.options.length = 0;
         var varItem1 = new Option("FTP", "FTP"); 
         methodSelect.options.add(varItem1);
-        var varItem2 = new Option("WGET", "WGET");
+        var varItem2 = new Option("HTTP", "HTTP");
         methodSelect.options.add(varItem2);
 	}
 	else
@@ -15,8 +15,8 @@ function method_change(){
 		methodSelect.options.length = 0;
         var varItem1 = new Option("FTP", "FTP"); 
         methodSelect.options.add(varItem1);
-        var varItem2 = new Option("SCP", "SCP");
-        methodSelect.options.add(varItem2);
+       /* var varItem2 = new Option("SCP", "SCP");
+        methodSelect.options.add(varItem2);*/
 	}
 }
 /*prevent Data Sender and Receiver are same*/

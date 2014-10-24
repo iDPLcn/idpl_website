@@ -6,7 +6,7 @@ import java.util.*;
 
 public class RecordDAOImpl implements RecordDAO{
 	public long insert(Record record,String TableName) throws Exception{
-		String sql="INSERT INTO "+TableName+"(id,testName,way,source,dataSize,destination,frequency,timeStart,timeEnd,Date,method,protocol,number,parallel,username) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql="INSERT INTO "+TableName+"(id,testName,way,source,dataSize,destination,frequency,Date,method,protocol,number,parallel,username,experimentId) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement pstmt=null;
 		DataBaseConnection dbc=null;
 		
@@ -26,14 +26,13 @@ public class RecordDAOImpl implements RecordDAO{
 			pstmt.setString(5, record.getDataSize());
 			pstmt.setString(6, record.getDataDestination());
 			pstmt.setString(7, record.getRepeat());
-			pstmt.setString(8, record.getTime_Start());
-			pstmt.setString(9, record.getTime_End());
-			pstmt.setString(10, record.getDate());
-			pstmt.setString(11, record.getMethod());
-			pstmt.setString(12, record.getProtocol());
-			pstmt.setString(13, record.getNumber());
-			pstmt.setString(14, record.getParallel());
-			pstmt.setString(15, record.getUsername());
+			pstmt.setString(8, record.getDate());
+			pstmt.setString(9, record.getMethod());
+			pstmt.setString(10, record.getProtocol());
+			pstmt.setString(11, record.getNumber());
+			pstmt.setString(12, record.getParallel());
+			pstmt.setString(13, record.getUsername());
+			pstmt.setLong(14, record.getExperimentId());
 			pstmt.executeUpdate();
 			pstmt.close();
 			
@@ -51,9 +50,9 @@ public class RecordDAOImpl implements RecordDAO{
 	public void delete(Record record,String TableName) throws Exception{
 		
 	}
-	public Record queryById(long id,String TableName,String username) throws Exception{
+	public Record queryById(long id,String TableName,String username,long experimentId) throws Exception{
 		Record record=null;
-		String sql="SELECT * FROM "+TableName+" WHERE id=? AND username='"+username+"'";		
+		String sql="SELECT * FROM "+TableName+" WHERE id=? AND username='"+username+"' AND experimentId="+experimentId;		
 		PreparedStatement pstmt=null;
 		DataBaseConnection dbc=null;
 		if(TableName.equals("test"))
@@ -71,8 +70,8 @@ public class RecordDAOImpl implements RecordDAO{
 					record.setDataSource(rs.getString(4));
 					record.setDataSize(rs.getString(5));
 					record.setDataDestination(rs.getString(6));
-					record.setTime_Start(rs.getString(7));
-					record.setTime_End(rs.getString(8));
+				//	record.setTime_Start(rs.getString(7));
+				//	record.setTime_End(rs.getString(8));
 					record.setDate(rs.getString(9));
 					record.setMethod(rs.getString(10));
 					record.setProtocol(rs.getString(11));
@@ -80,6 +79,7 @@ public class RecordDAOImpl implements RecordDAO{
 					record.setParallel(rs.getString(13));
 					record.setRepeat(rs.getString(14));
 					record.setUsername(rs.getString(15));
+					record.setExperimentId(rs.getLong(16));
 				}
 				rs.close();
 				pstmt.close();
@@ -118,9 +118,9 @@ public class RecordDAOImpl implements RecordDAO{
 		}
 		return record;
 	}
-	public List<Record> queryAll(String TableName,String username) throws Exception{
+	public List<Record> queryAll(String TableName,String username,long experimentId) throws Exception{
 		List<Record> all= new ArrayList<Record>();
-		String sql="SELECT * FROM "+TableName+" WHERE username='"+username+"'";
+		String sql="SELECT * FROM "+TableName+" WHERE username='"+username+"' AND experimentId="+experimentId;
 		System.out.println(sql);
 		PreparedStatement pstmt=null;
 		DataBaseConnection dbc=null;
@@ -136,8 +136,8 @@ public class RecordDAOImpl implements RecordDAO{
 				record.setDataSource(rs.getString(4));
 				record.setDataSize(rs.getString(5));
 				record.setDataDestination(rs.getString(6));
-				record.setTime_Start(rs.getString(7));
-				record.setTime_End(rs.getString(8));
+			//	record.setTime_Start(rs.getString(7));
+			//	record.setTime_End(rs.getString(8));
 				record.setDate(rs.getString(9));
 				record.setMethod(rs.getString(10));
 				record.setProtocol(rs.getString(11));
@@ -145,6 +145,7 @@ public class RecordDAOImpl implements RecordDAO{
 				record.setParallel(rs.getString(13));
 				record.setRepeat(rs.getString(14));
 				record.setUsername(rs.getString(15));
+				record.setExperimentId(rs.getLong(16));
 				all.add(record);
 			}
 			rs.close();
