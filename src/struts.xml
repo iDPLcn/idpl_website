@@ -35,6 +35,12 @@
         	<result name="login">/login.html</result>
         </action>
         
+        <action name="showStage" class="com.bed.action.ShowStageAction">
+        	<result name="success">/stageShow.jsp</result>
+        	<result name="fail">/experimentShow.jsp</result>
+        	<result name="login">/login.html</result>
+        </action>
+        
         <action name="submitExperiment" class="com.bed.action.SubmitAction">
         	<result name="success">/submitSuccess.jsp</result>
         	<result name="fail">/submitFail.jsp</result>

@@ -52,6 +52,7 @@ public class RecordDAOImpl implements RecordDAO{
 	}
 	public Record queryById(long id,String TableName,String username,long experimentId) throws Exception{
 		Record record=null;
+		long recordId;
 		String sql="SELECT * FROM "+TableName+" WHERE id=? AND username='"+username+"' AND experimentId="+experimentId;		
 		PreparedStatement pstmt=null;
 		DataBaseConnection dbc=null;
@@ -64,7 +65,8 @@ public class RecordDAOImpl implements RecordDAO{
 				ResultSet rs=pstmt.executeQuery();
 				if(rs.next()){
 					record=new Record();
-					record.setRecordId(rs.getLong(1));
+					recordId=rs.getLong(1);
+					record.setRecordId(recordId);
 					record.setTestName(rs.getString(2));
 					record.setWay(rs.getString(3));
 					record.setDataSource(rs.getString(4));
@@ -80,32 +82,7 @@ public class RecordDAOImpl implements RecordDAO{
 					record.setRepeat(rs.getString(14));
 					record.setUsername(rs.getString(15));
 					record.setExperimentId(rs.getLong(16));
-				}
-				rs.close();
-				pstmt.close();
-			}catch(Exception e){
-				throw new Exception("Query By Id Fail!");
-			}
-			finally{
-				dbc.close();
-			}
-		}
-		else if(TableName.equals("condorjob"))
-		{
-			try{
-				sql="SELECT * FROM "+TableName+" WHERE id=?";
-				dbc=new DataBaseConnection(TableName);
-				pstmt=dbc.getConnection().prepareStatement(sql);
-				pstmt.setLong(1, id);
-				ResultSet rs=pstmt.executeQuery();
-				if(rs.next()){
-					record=new Record();
-					record.setRecordId(rs.getLong(1));
-					record.setClusterId(rs.getInt(2));
-					record.setJobId(rs.getInt(3));
-					record.setState(rs.getString(4));
-					record.setStartRunning(rs.getString(5));
-					record.setCompletedTime(rs.getString(6));
+					record.setRepeatPart(getCompleteNumber(recordId,"idplExperiment",username,experimentId));
 				}
 				rs.close();
 				pstmt.close();
@@ -125,12 +102,18 @@ public class RecordDAOImpl implements RecordDAO{
 		PreparedStatement pstmt=null;
 		DataBaseConnection dbc=null;
 		try{
+			long recordId;
+			int completeNumber;
+			int percentage;
+			int repeat;	
 			dbc=new DataBaseConnection(TableName);
 			pstmt=dbc.getConnection().prepareStatement(sql);
 			ResultSet rs=pstmt.executeQuery();
 			while(rs.next()){
 				Record record=new Record();
-				record.setRecordId(rs.getLong(1));
+				recordId=rs.getLong(1);
+//				System.out.println(recordId);
+				record.setRecordId(recordId);
 				record.setTestName(rs.getString(2));
 				record.setWay(rs.getString(3));
 				record.setDataSource(rs.getString(4));
@@ -146,6 +129,14 @@ public class RecordDAOImpl implements RecordDAO{
 				record.setRepeat(rs.getString(14));
 				record.setUsername(rs.getString(15));
 				record.setExperimentId(rs.getLong(16));
+				
+				completeNumber=getCompleteNumber(recordId,"idplExperiment",username,experimentId);
+//				System.out.println(completeNumber);
+				record.setRepeatPart(completeNumber);
+				
+				repeat=Integer.parseInt(rs.getString(14));
+				percentage=completeNumber*100/repeat;
+				record.setPercentage(percentage);
 				all.add(record);
 			}
 			rs.close();
@@ -158,5 +149,34 @@ public class RecordDAOImpl implements RecordDAO{
 			dbc.close();
 		}
 		return all;
+	}
+	public int getCompleteNumber(long id,String TableName,String username,long experimentId) throws Exception{
+		int result=0;
+		String sql="SELECT * FROM "+TableName+" WHERE id="+experimentId+" AND exp_id="+id;
+		System.out.println(sql);
+		PreparedStatement pstmt=null;
+		DataBaseConnection dbc=null;
+		try{
+			dbc=new DataBaseConnection(TableName);
+			pstmt=dbc.getConnection().prepareStatement(sql);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()){
+				System.out.println(id);
+				if(rs.getInt(3)!=0)
+				{
+					System.out.println(result);
+					if(rs.getString(5).equals("Completed"))
+						result++;
+				}
+			}
+			rs.close();
+			pstmt.close();
+		}catch(Exception e){
+			throw new Exception("Query By Id Fail!");
+		}
+		finally{
+			dbc.close();
+		}
+		return result;
 	}
 }

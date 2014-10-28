@@ -140,9 +140,9 @@ public class TestAction extends BaseAction{
 //		String timeEnd=null;
 		String result="fail";
 		String username=(String) session.getAttribute("username");
-		int repeat_number=Integer.parseInt(repeat);
-		int number_number=Integer.parseInt(number);
-		int parallel_number=Integer.parseInt(parallel);
+//		int repeat_number=Integer.parseInt(repeat);
+//		int number_number=Integer.parseInt(number);
+//		int parallel_number=Integer.parseInt(parallel);
 		
 		Date nowTime=new Date();
 		SimpleDateFormat matter1=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

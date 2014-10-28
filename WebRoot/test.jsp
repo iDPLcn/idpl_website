@@ -242,7 +242,7 @@
 												<form  class="form-horizontal themed" id="uislider-demo" action="test?experimentId=${experimentId}"  method="post" novalidate="novalidate">
 													<fieldset>
 														<div class="control-group">
-															<label class="control-label" for="input01">Experiment Name</label>
+															<label class="control-label" for="input01">Stage Name</label>
 															<div class="controls">
 																<input type="text" class="span12" name="testName" id="testName"/>
 															</div>

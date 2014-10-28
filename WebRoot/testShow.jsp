@@ -67,15 +67,15 @@
    	<![endif]-->
 
 	<!-- For Modern Browsers -->
-	<link rel="shortcut icon" href="img/favicons/favicon.png" />
+	<!-- <link rel="shortcut icon" href="img/favicons/favicon.png" /> -->
 	<!-- For everything else -->
-	<link rel="shortcut icon" href="img/favicons/favicon.ico" />
+	<!-- <link rel="shortcut icon" href="img/favicons/favicon.ico" /> -->
 	<!-- For retina screens -->
-	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/favicons/apple-touch-icon-retina.png" />
+	<!-- <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/favicons/apple-touch-icon-retina.png" /> -->
 	<!-- For iPad 1-->
-	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/favicons/apple-touch-icon-ipad.png" />
+	<!-- <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/favicons/apple-touch-icon-ipad.png" /> -->
 	<!-- For iPhone 3G, iPod Touch and Android -->
-	<link rel="apple-touch-icon-precomposed" href="img/favicons/apple-touch-icon.png" />
+	<!-- <link rel="apple-touch-icon-precomposed" href="img/favicons/apple-touch-icon.png" /> -->
 	
 	<!-- iOS web-app metas -->
 	<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -229,7 +229,15 @@
 							</div>
 						</div>
 						<!-- invoice end -->
-						
+						<s:if test="experimentList==null">
+							<div class="alert adjusted alert-block">
+								<h4 class="alert-heading">Note</h4>
+								<p>
+									You haven't added any stage yet.
+								</p>
+							</div>
+						</s:if>
+						<s:else>
 						<!-- widget grid -->
 						<section id="widget-grid" class="">
 							
@@ -239,7 +247,7 @@
 							<div class="row-fluid">
 								<article class="span12">
 									<!-- new widget -->
-									<div class="jarviswidget jarviswidget-sortable" id="widget-id-0" data-widget-deletebutton="false" data-widget-editbutton="false" role="widget">
+									<div class="jarviswidget jarviswidget-sortable" data-widget-deletebutton="false" data-widget-editbutton="false" role="widget">
 									    <header>
 									        <h2></h2>                           
 									    </header>
@@ -356,6 +364,7 @@
 							
 						</section>
 						<!-- end widget grid -->
+						</s:else>
 					</div>		
 				</div>
 				<!-- end main content -->

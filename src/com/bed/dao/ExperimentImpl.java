@@ -84,7 +84,11 @@ public class ExperimentImpl implements ExperimentDAO {
 				experiment.setUsername(rs.getString(3));
 				experiment.setTimeStart(rs.getString(4));
 				experiment.setTimeEnd(rs.getString(5));
-				experiment.setSubmit(rs.getString(6));
+				if(rs.getString(6)==null)
+					experiment.setSubmit("No");
+				else
+					experiment.setSubmit(rs.getString(6));
+//				experiment.setDate(rs.getString(7));
 			}
 			rs.close();
 			pstmt.close();
@@ -113,7 +117,10 @@ public class ExperimentImpl implements ExperimentDAO {
 				experiment.setUsername(rs.getString(3));
 				experiment.setTimeStart(rs.getString(4));
 				experiment.setTimeEnd(rs.getString(5));
-				experiment.setSubmit(rs.getString(6));
+				if(rs.getString(6)==null)
+					experiment.setSubmit("No");
+				else
+					experiment.setSubmit(rs.getString(6));
 				experiment.setDate(rs.getString(7));
 				all.add(experiment);
 			}

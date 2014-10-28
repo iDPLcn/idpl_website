@@ -200,14 +200,14 @@
 				<div id="page-content">
 					
 					<!-- page header -->
-					<h1 id="page-header">Experiment Result</h1>
+					<h1 id="page-header">Stage Result</h1>
 					
 					<div class="fluid-container">			
 						<!-- invoice -->
 						<div id="invoice-bar" class="btn-toolbar">
 							<div class="btn-group">
-								<a href="experiment.jsp"><button type="button" class="btn medium"><i class="cus-add"></i> Add Experiments</button></a>
-								<a href="showExperiment"><button type="button" class="btn medium"><i class="cus-arrow-refresh"></i> Refresh</button></a>
+								<!-- <a href="experiment.jsp"><button type="button" class="btn medium"><i class="cus-add"></i> Add Experiments</button></a> -->
+								<a href="showStage?experimentId=${experimentId}"><button type="button" class="btn medium"><i class="cus-arrow-refresh"></i> Refresh</button></a>
 							</div>
 						</div>
 						<!-- invoice end -->
@@ -216,63 +216,56 @@
 						<section id="widget-grid" class="">
 							
 							<!-- row-fluid -->
-							<s:iterator id="experiment" value="experimentList">
+							<s:iterator id="stage" value="stageList">
 							
 							<div class="row-fluid">
 								<article class="span12">
 									<!-- new widget -->
 									<div class="jarviswidget jarviswidget-sortable" data-widget-deletebutton="false" data-widget-editbutton="false" role="widget">
 									    <header>
-									        <h2>${experiment.experimentName}</h2>                           
+									        <h2>${stage.testName}</h2>                           
 									    </header>
 									    <!-- wrap div -->
 									    <div class="content">
-									    
-									        <%-- <div class="jarviswidget-editbox">
-									            <div>
-									                <label>Title:</label>
-									                <input type="text" />
-									            </div>
-									            <div>
-									                <label>Styles:</label>
-									                <span data-widget-setstyle="purple" class="purple-btn"></span>
-									                <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
-									                <span data-widget-setstyle="green" class="green-btn"></span>
-									                <span data-widget-setstyle="yellow" class="yellow-btn"></span>
-									                <span data-widget-setstyle="orange" class="orange-btn"></span>
-									                <span data-widget-setstyle="pink" class="pink-btn"></span>
-									                <span data-widget-setstyle="red" class="red-btn"></span>
-									                <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
-									                <span data-widget-setstyle="black" class="black-btn"></span>
-									            </div>
-									        </div> --%>
+									 
             
 									        <div class="inner-spacer"> 
 									        <!-- content goes here -->
 												
-												<table class="table table-bordered table-striped">
+												<table class="table table-bordered table-striped responsive">
 														<thead>
 															<tr>
-																<th>Experiment name</th>
-																<th>Start Time</th>
-																<th>End Time</th>
-																<th>Date</th>
-																<th>Submit</th>
+																<th>Way</th>
+																<th>Method</th>
+																<th>Source</th>
+																<th>Destination</th>
+																<th>Date Size</th>
+																<th>Number</th>
+																<th>Parallel</th>
 															</tr>
 														</thead>
 														<tbody>
 															<tr>
-																<td>${experiment.experimentName}</td>
-																<td>${experiment.timeStart}</td>
-																<td>${experiment.timeEnd}</td>
-																<td>${experiment.date}</td>
-																<td><a href="showStage?experimentId=${experiment.experimentId}">${experiment.submit}</a></td>
+																<td>${stage.way}</td>
+																<td>${stage.method}</td>
+																<td>${stage.dataSource}</td>
+																<td>${stage.dataDestination}</td>
+																<td>${stage.dataSize}</td>
+																<td>${stage.number}</td>
+																<td>${stage.parallel}</td>
 															</tr>
+															
 														</tbody>
 												</table>
-										        <div class="progress active progress-striped">
-                                                                <div class="bar" style="width: 67%; ">67%</div>
-                                                            </div>	
+										    
+			                                    <div class="progress-stats">
+			                                        <div class="widget-content-padding">
+			                                            <div class="semi-block">
+			                                                <strong>Status</strong><strong class="pull-right">${stage.percentage}%</strong>
+			                                                <div class="progress progress-success value"><div class="bar" data-percentage="79" data-amount-part="${stage.repeatPart}" data-amount-total="${stage.repeat}" style="width:${stage.percentage}%;">${stage.repeatPart} / ${stage.repeat}</div></div>
+			                                            </div>
+			                                        </div>
+			                                    </div>		
 										    </div>
 										    <!-- end content-->
 									    </div>
@@ -284,24 +277,7 @@
 							
 							</s:iterator>
 							<!-- end row-fluid -->
-							<div class="pagination pagination-right">
-								<ul>
-									<s:if test="frontPage!=0">
-									<li>
-										<a href="showExperiment?page=${frontPage}">Prev</a>
-									</li>
-									</s:if>
-									<li>
-										<a href="showExperiment?page=1">1</a>
-									</li>
-									
-									<s:if test="nextPage!=0">
-									<li>
-										<a href="showExperiment?page=${nextPage}">Next</a>
-									</li>
-									</s:if>
-								</ul>
-							</div>
+							
 						</section>
 						<!-- end widget grid -->
 					</div>		

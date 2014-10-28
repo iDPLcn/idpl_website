@@ -234,9 +234,9 @@
 											<h4>
 												You have created an experiment successfully!
 											</h4>
-											<button class="btn btn-small btn-success" style="margin-top:20px">
+											<a href="showExperiment"><button class="btn btn-small btn-success" style="margin-top:20px">
 												Show Experiment Result
-											</button>
+											</button></a>
 										</div>
 								</div>
 							</div>

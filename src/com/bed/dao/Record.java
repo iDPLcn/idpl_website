@@ -13,7 +13,8 @@ public class Record {
 	private String number;
 	private String parallel;
 	private String username;
-	
+	private int repeatPart;
+	private int percentage;
 	private int clusterId;       //condor的cluster的ID
 	private int jobId;           //condor的job的ID
 
@@ -77,6 +78,12 @@ public class Record {
 	public String getDate(){          //得到数据设定时间
 		return this.Date;
 	}
+	public int getRepeatPart(){
+		return this.repeatPart;
+	}
+	public int getPercentage(){
+		return this.percentage;
+	}
 	public String getStartRunning(){  //得到数据传输实际开始时间
 		return this.StartRunning;
 	}
@@ -134,6 +141,12 @@ public class Record {
 	}
 	public void setDate(String date){         //设置数据设定时间
 		this.Date=date;
+	}
+	public void setRepeatPart(int repeatPart){
+		this.repeatPart=repeatPart;
+	}
+	public void setPercentage(int percentage){
+		this.percentage=percentage;
 	}
 	public void setClusterId(int clusterId){   //设置Cluster的ID
 		this.clusterId=clusterId;

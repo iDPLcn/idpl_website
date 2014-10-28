@@ -1,7 +1,7 @@
 package com.bed.dao;
 import java.sql.*;
 public class DataBaseConnection {	
-	private String url="jdbc:mysql://10.1.1.56:3306/cac";
+	private String url="";
 	private static final String user="";
 	private static final String password="";
 	Connection conn=null;
