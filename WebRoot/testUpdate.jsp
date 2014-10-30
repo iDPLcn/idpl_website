@@ -197,59 +197,23 @@
 				<!-- aside end -->
 				
 				<!-- main content -->
-				<div id="page-content">
-					
+				<div id="page-content">	
 					<!-- page header -->
-					<%-- <h1 id="page-header">${experimentName}</h1>	 --%>
+					<%-- <h1 id="page-header">${expName}</h1> --%>	
 					
 					<div class="fluid-container">
-						<!-- wizard steps -->
-						<ul class="bwizard-steps">
-							<li>
-									<span class="label badge-inverse">1</span>
-									<a>Step 1</a>
-							</li>
-							<li class="active">
-									<span class="label badge-inverse">2</span>
-									<a href="#inverse-tab2" data-toggle="tab">Step 2: Add Stages</a>
-							</li>
-							<li>
-									<span class="label badge-inverse">3</span>
-									<a>Step 3</a>
-							</li>
-						</ul>
-						<!-- end wizard steps -->	
 						
-						<!-- invoice -->
-						<div id="invoice-bar" class="btn-toolbar">
-							<div class="btn-group">
-								<a href="add?experimentId=${experimentId}"><button type="button" class="btn medium"><i class="cus-add"></i> Add Stages</button></a>
-								<a href="showTest?experimentId=${experimentId}"><button type="button" class="btn medium"><i class="cus-arrow-refresh"></i> Refresh</button></a>
-								<a href="submitExperiment?experimentId=${experimentId}"><button type="button" class="btn medium"><i class="cus-accept"></i> Submit</button></a>
-							</div>
-						</div>
-						<!-- invoice end -->
-						<s:if test="experimentList==null">
-							<div class="alert adjusted alert-block">
-								<h4 class="alert-heading">Note</h4>
-								<p>
-									You haven't added any stage yet.
-								</p>
-							</div>
-						</s:if>
-						<s:else>
 						<!-- widget grid -->
 						<section id="widget-grid" class="">
 							
 							<!-- row-fluid -->
-							<s:iterator id="stage" value="experimentList">
 							
 							<div class="row-fluid">
 								<article class="span12">
 									<!-- new widget -->
-									<div class="jarviswidget jarviswidget-sortable" data-widget-deletebutton="false" data-widget-editbutton="false" role="widget">
+									<div class="jarviswidget jarviswidget-sortable" id="widget-id-0" data-widget-deletebutton="false" data-widget-editbutton="false" role="widget">
 									    <header>
-									        <h2>${stage.testName}</h2>                           
+									        <h2></h2>                           
 									    </header>
 									    <!-- wrap div -->
 									    <div>
@@ -275,83 +239,180 @@
             
 									        <div class="inner-spacer"> 
 									        <!-- content goes here -->
-												<form  class="form-horizontal themed" novalidate="novalidate">
+									        	<s:if test="note!=null">
+									        	<div class="widget alert alert-warning adjusted">
+													<button class="close" data-dismiss="alert">×</button>
+													<i class="cus-exclamation-octagon-fram"></i>
+													<strong>ALERT:</strong> <strong>${note}</strong>
+												</div>
+									        	</s:if>
+												<form  class="form-horizontal themed" id="uislider-demo" action="updateStage2?recordId=${record.recordId}&experimentId=${experimentId}" method="post" novalidate="novalidate">
 													<fieldset>
 														<div class="control-group">
 															<label class="control-label" for="input01">Stage Name</label>
 															<div class="controls">
-																<input type="text" class="span12 disabled" name="testName" id="testName" placeholder="${stage.testName}" disabled/>
+																<input type="text" class="span12" name="testName" id="testName" value="${record.testName}"/>
 															</div>
 														</div>
 														<div class="control-group">
 															<label class="control-label" for="select01">Way</label>
 															<div class="controls">
-														        <input type="text" class="span12 disabled" name="way" id="way" placeholder="${stage.way}" disabled/>
+																<select name="way" class="span12 with-search"  onchange="method_change()">
+										
+														                <option value="PUT">PUT</option>
+																		<option value="GET">GET</option>
+																	
+														        </select>
 															</div>
 														</div>
 														<div class="control-group">
 															<label class="control-label" for="select01">Method</label>
 															<div class="controls">
-																<input type="text" class="span12 disabled" name="method" id="method" placeholder="${stage.method}" disabled/>
+																<select name="method" class="span12 with-search">
+																	
+														                <option value="FTP">FTP</option>
+														                <!-- <option value="SCP">SCP</option> -->
+													                
+														        </select>
 															</div>
 														</div>
 														<div class="control-group">
 															<label class="control-label" for="select01">Protocol</label>
 															<div class="controls">
-																<input type="text" class="span12 disabled" name="protocol" id="protocol" placeholder="${stage.protocol}" disabled/>
+																<select name="protocol" class="span12 with-search">
+																	<s:if test="record.protocol=='ipv4'">
+														                <option value="ipv4">IPv4</option>
+																		<option value="ipv6">IPv6</option>
+																	</s:if>
+																	<s:else>
+																		<option value="ipv6">IPv6</option>
+																		<option value="ipv4">IPv4</option>
+																	</s:else>
+														        </select>
 															</div>
 														</div>
 														<div class="control-group">
 															<label class="control-label" for="select01">Data Source</label>
 															<div class="controls">
-																<input type="text" class="span12 disabled" name="dataSource" id="dataSource" placeholder="${stage.dataSource}" disabled/>
+																<select name="dataSource" class="span12 with-search" onchange="receiver_change()">
+													                <option value="BUAA">BUAA</option>
+																	<option value="CNIC">CNIC</option>
+																	<option value="UCSD">UCSD</option>
+																	<option value="WISC">WISC</option>
+														        </select>
 															</div>
 														</div>
 														<div class="control-group">
 															<label class="control-label" for="select01">Data Destination</label>
 															<div class="controls">
-																<input type="text" class="span12 disabled" name="dataDestination" id="dataDestination" placeholder="${stage.dataDestination}" disabled/>
+																<select name="dataDestination" class="span12 with-search">
+																	<option value="CNIC">CNIC</option>
+																	<option value="UCSD">UCSD</option>
+																	<option value="WISC">WISC</option>
+														        </select>
 															</div>
 														</div>
 														<div class="control-group">
 															<label class="control-label">Data Size</label>
 																<div class="controls">
-																	<input type="text" class="span12 disabled" name="dataSize" id="dataSize" placeholder="${stage.dataSize}" disabled/>
-																</div>														
+																	<p class="info-block">		
+																		<input type="text" name="dataNumber" id="amount2" class="ui-display-label"/> 
+																	</p>
+																	<label class="radio inline">
+																	  <input type="radio" name="dataSize" id="optionsRadios4" value="K" checked="" />
+																	  KB
+																	</label>
+																	<label class="radio inline">
+																	  <input type="radio" name="dataSize" id="optionsRadios5" value="M" />
+																	  MB
+																	</label>
+																	<label class="radio inline">
+																	  <input type="radio" name="dataSize" id="optionsRadios6" value="G"  />
+																	  GB
+																	</label>
+																</div>
+															<!-- <label class="control-label">Number</label> -->
+															<div class="controls">																  
+																<div id="slider-range-min" class="warning-slider"></div>
+															</div>															
 														</div>
 														
 														<div class="control-group">
 															<label class="control-label">Repeat</label>
 															<div class="controls">
-																<input type="text" class="span12 disabled" name="repeat" id="repeat" placeholder="${stage.repeat}" disabled/>
+																<p class="info-block">
+		    													<input type="text" name="repeat" id="amount5" class="ui-display-label" />
+																</p>
+																<div id="slider-range-min2" class="info-slider"></div>
+		
 															</div>
 														</div>
 														
 														<div class="control-group">
 															<label class="control-label">Number</label>
 															<div class="controls">
-																<input type="text" class="span12 disabled" name="number" id="number" placeholder="${stage.number}" disabled/>
+																<p class="info-block">
+		    													<input type="text" name="number" id="amount6" class="ui-display-label"/>
+																</p>
+																<div id="slider-range-min3" class="important-slider"></div>
 															</div>
 														</div>
 														
 														<div class="control-group">
 															<label class="control-label">Parallel</label>
 															<div class="controls">
-																<input type="text" class="span12 disabled" name="parallel" id="parallel" placeholder="${stage.parallel}" disabled/>
+																<p class="info-block">
+		    													<input type="text" name="parallel" id="amount7" class="ui-display-label" />
+																</p>
+																<div id="slider-range-min4" class="success-slider"></div>
 															</div>
 														</div>
 														
+														<%-- 
+														<div class="control-group" id="timepicker-demo">
+															<label class="control-label">Time (Start)</label>
+															<div class="controls">
+																
+																<div class="input-append date" id="datepicker-js" data-date-format="yyyy-mm-dd">
+																	<input id="timeStart_date" name="timeStart_date" class="datepicker-input" size="16" type="text" value="" placeholder="Select a date" />
+																	<span class="add-on"><i class="cus-calendar-2"></i></span>
+																</div>
+																
+																
+																<div class="input-append bootstrap-timepicker-component">
+														           	<input id="timeStart_time" name="timeStart_time" type="text" class="timepicker-input" value="" />
+														            <span class="add-on"><i class="cus-clock"></i></span>
+														        </div>
+																
+															</div>
+														</div>
 														
+														<div class="control-group" id="timepicker-demo">
+															<label class="control-label">Time (End)</label>
+															<div class="controls">
+																
+																<div class="input-append date" id="datepicker-js" data-date-format="yyyy-mm-dd">
+																	<input id="timeEnd_date" name="timeEnd_date" class="datepicker-input" size="16" type="text" value="" placeholder="Select a date" />
+																	<span class="add-on"><i class="cus-calendar-2"></i></span>
+																</div>
+																
+																
+																<div class="input-append bootstrap-timepicker-component">
+														           	<input id="timeEnd_time" name="timeEnd_time" type="text" class="timepicker-input" value="" />
+														            <span class="add-on"><i class="cus-clock"></i></span>
+														        </div>
+																
+															</div>
+														</div> 
+														--%>
+														<div class="form-actions">
+															<button type="submit" class="btn medium btn-primary">
+																Submit
+															</button>
+														</div>
 													</fieldset>
 												</form>
-												<div class="form-actions">
-													<a href="deleteStage?recordId=${stage.recordId}&experimentId=${experimentId}"><button class="btn medium btn-danger">
-														Delete
-													</button></a>
-													<a href="updateStage?recordId=${stage.recordId}&experimentId=${experimentId}"><button class="btn medium btn-primary">
-														Update
-													</button></a>
-												</div>
+												
 										    </div>
 										    <!-- end content-->
 									    </div>
@@ -360,12 +421,11 @@
 									<!-- end widget -->
 								</article>
 							</div>
-							</s:iterator>
+							
 							<!-- end row-fluid -->
 							
 						</section>
 						<!-- end widget grid -->
-						</s:else>
 					</div>		
 				</div>
 				<!-- end main content -->

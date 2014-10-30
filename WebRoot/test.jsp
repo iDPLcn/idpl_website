@@ -239,6 +239,13 @@
             
 									        <div class="inner-spacer"> 
 									        <!-- content goes here -->
+									        	<s:if test="note!=null">
+									        	<div class="widget alert alert-warning adjusted">
+													<button class="close" data-dismiss="alert">×</button>
+													<i class="cus-exclamation-octagon-fram"></i>
+													<strong>ALERT:</strong> <strong>${note}</strong>
+												</div>
+									        	</s:if>
 												<form  class="form-horizontal themed" id="uislider-demo" action="test?experimentId=${experimentId}"  method="post" novalidate="novalidate">
 													<fieldset>
 														<div class="control-group">
@@ -390,9 +397,7 @@
 														--%>
 
 														<div class="form-actions">
-															<button type="reset" class="btn medium btn-danger">
-																Cancel
-															</button>
+															
 															<button type="submit" class="btn medium btn-primary">
 																Submit
 															</button>

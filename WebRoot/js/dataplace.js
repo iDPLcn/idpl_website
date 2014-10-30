@@ -175,7 +175,7 @@ function mycheck(){
 function auto_shift(){
 	
 }*/
-function GetRequest(keyword) {
+/*function GetRequest(keyword) {
 	   var url = location.search;
 	   var theRequest = new Object();
 	   if (url.indexOf("?") != -1) {
@@ -201,4 +201,4 @@ function GetRequest(keyword) {
 			setTimeout("redirect()",1000);
 		if(url=="test")
 			setTimeout("redirect()",1000);
-	}
+	}*/

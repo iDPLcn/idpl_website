@@ -51,10 +51,10 @@ public class ShowExperimentAction extends BaseAction{
 		int RecordNumberInOnePage=10;
 		ExperimentDAO experimentDAO=ExperimentDAOFactory.getExperimentDAOInstance();
 		String username=(String)session.getAttribute("username");
-//		System.out.println("ShowExperiment Action");
-//		System.out.println(username);
+//		System.out.println("ShowExperiment Action");		
 		if(username!=null)
 		{
+//			System.out.println(username);
 			try {
 				if(page==0) page=1;
 				List<Experiment> OrignalExperimentList=experimentDAO.queryAll("experiment", username);

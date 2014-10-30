@@ -56,8 +56,8 @@ public class SubmitAction extends BaseAction{
 					parallel_number=Integer.parseInt(record.getParallel());
 					sexperiment=new SExperiment(record.getRecordId(),record.getDataSource(),record.getDataDestination(),
 							record.getWay(),record.getMethod(),record.getProtocol(),record.getDataSize(),number_number,parallel_number,repeat_number);
-					System.out.println(record.getRecordId()+record.getDataSource()+record.getDataDestination()+
-							record.getWay()+record.getMethod()+record.getProtocol()+record.getDataSize()+repeat_number+number_number+parallel_number);
+//					System.out.println(record.getRecordId()+record.getDataSource()+record.getDataDestination()+
+//							record.getWay()+record.getMethod()+record.getProtocol()+record.getDataSize()+repeat_number+number_number+parallel_number);
 					sexpList.add(sexperiment);
 				}
 				transfer.setExpList(sexpList);

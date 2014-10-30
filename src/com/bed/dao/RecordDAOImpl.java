@@ -47,8 +47,21 @@ public class RecordDAOImpl implements RecordDAO{
 	public void update(Record record,String TableName) throws Exception{
 		
 	}
-	public void delete(Record record,String TableName) throws Exception{
-		
+	public void delete(long recordId,String TableName,long experimentId) throws Exception{
+		String sql="DELETE FROM "+TableName+" WHERE id="+recordId+" AND experimentId="+experimentId;
+		PreparedStatement pstmt=null;
+		DataBaseConnection dbc=null;
+		try{
+			dbc=new DataBaseConnection(TableName);
+			pstmt=dbc.getConnection().prepareStatement(sql);
+			pstmt.executeUpdate();
+			pstmt.close();
+		}catch (Exception e){
+			throw new Exception("Delete Stage ERROR!");
+		}
+		finally{
+			dbc.close();
+		}
 	}
 	public Record queryById(long id,String TableName,String username,long experimentId) throws Exception{
 		Record record=null;
@@ -98,7 +111,7 @@ public class RecordDAOImpl implements RecordDAO{
 	public List<Record> queryAll(String TableName,String username,long experimentId) throws Exception{
 		List<Record> all= new ArrayList<Record>();
 		String sql="SELECT * FROM "+TableName+" WHERE username='"+username+"' AND experimentId="+experimentId;
-		System.out.println(sql);
+//		System.out.println(sql);
 		PreparedStatement pstmt=null;
 		DataBaseConnection dbc=null;
 		try{
@@ -153,7 +166,7 @@ public class RecordDAOImpl implements RecordDAO{
 	public int getCompleteNumber(long id,String TableName,String username,long experimentId) throws Exception{
 		int result=0;
 		String sql="SELECT * FROM "+TableName+" WHERE id="+experimentId+" AND exp_id="+id;
-		System.out.println(sql);
+//		System.out.println(sql);
 		PreparedStatement pstmt=null;
 		DataBaseConnection dbc=null;
 		try{
@@ -161,10 +174,10 @@ public class RecordDAOImpl implements RecordDAO{
 			pstmt=dbc.getConnection().prepareStatement(sql);
 			ResultSet rs=pstmt.executeQuery();
 			while(rs.next()){
-				System.out.println(id);
+//				System.out.println(id);
 				if(rs.getInt(3)!=0)
 				{
-					System.out.println(result);
+//					System.out.println(result);
 					if(rs.getString(5).equals("Completed"))
 						result++;
 				}

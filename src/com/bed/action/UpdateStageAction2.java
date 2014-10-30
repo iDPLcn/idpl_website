@@ -1,14 +1,17 @@
 package com.bed.action;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.http.HttpSession;
 
-import com.bed.dao.*;
-import webcondor.*;
-import javax.servlet.http.*;
-import org.apache.struts2.ServletActionContext; 
+import org.apache.struts2.ServletActionContext;
 
-public class TestAction extends BaseAction{
+import com.bed.dao.Record;
+import com.bed.dao.RecordDAO;
+import com.bed.dao.RecordDAOFactory;
+
+public class UpdateStageAction2 extends BaseAction{
 	private long recordId;       //实验记录ID
 	private String testName;     //实验名称
 	private String way;          //数据传输方法
@@ -25,8 +28,9 @@ public class TestAction extends BaseAction{
 	private String timeStart_time;
 	private String timeEnd_date;
 	private String timeEnd_time;*/
-	private long experimentId;
 	private String note;
+	private long experimentId;
+	
 	public long getRecordId(){     //得到实验记录ID
 		return this.recordId;
 	}
@@ -150,11 +154,6 @@ public class TestAction extends BaseAction{
 		int number_number=Integer.parseInt(number);
 		int parallel_number=Integer.parseInt(parallel);
 		
-		if(number_number<parallel_number) 
-		{
-			note="number is not less than parallel!";
-			return result;
-		}
 		Date nowTime=new Date();
 		SimpleDateFormat matter1=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date=matter1.format(nowTime);
@@ -184,25 +183,28 @@ public class TestAction extends BaseAction{
 //		record.setTime_End(timeEnd);
 		if(username!=null)
 		{
+			if(number_number<parallel_number) 
+			{
+				note="number is not less than parallel!";
+				return result;
+			}
+			if(way.equals("PUT")&&method.equals("HTTP"))
+			{
+				note="PUT do not have method of HTTP!";
+				return result;
+			}
+				
 			record.setUsername(username);
 			try {
-				long NewId=recordDAO.insert(record,"test");
 				note=null;
+				recordDAO.delete(recordId, "test", experimentId);
+				long NewId=recordDAO.insert(record,"test");
 				result="success";
-				//webcondor.Transfer.Transfer(long id, String user, String source, 
-				//       String destination, String size, int number, int repeat, int parallel, 
-				//       String protocol, String putorget, String v4orv6, String starttime, String stoptime)
-				/*Transfer transfer=new Transfer(NewId, record.getUsername(), record.getDataSource(), 
-						record.getDataDestination(), record.getDataSize(), number_number, repeat_number, parallel_number,
-						record.getMethod(), record.getWay(), record.getProtocol(), timeStart, timeEnd);
-				transfer.submit();*/
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		else
-			return "login";
 		return result;
 	}
 }

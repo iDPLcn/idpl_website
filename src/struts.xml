@@ -26,7 +26,8 @@
         
         <action name="test" class="com.bed.action.TestAction">
         	<result name="success" type="chain">showTest</result>
-        	<result name="fail">/login.jsp</result>
+        	<result name="fail">/test.jsp</result>
+        	<result name="login">/login.html</result>
         </action>
         
         <action name="showTest" class="com.bed.action.ShowTestAction">
@@ -51,6 +52,30 @@
         	<result name="success">/experimentShow.jsp</result>
         	<result name="fail">/experiment.jsp</result>
         	<result name="login">/login.html</result>
+        </action>
+        
+        <action name="deleteStage" class="com.bed.action.DeleteStageAction">
+        	<result name="success" type="chain">showTest</result>
+        	<result name="fail">/experiment.jsp</result>
+        	<result name="login">/login.html</result>
+        </action>
+        
+        <action name="updateStage" class="com.bed.action.UpdateStageAction">
+        	<result name="success">/testUpdate.jsp</result>
+        	<result name="fail">/experiment.jsp</result>
+        	<result name="login">/login.html</result>
+        </action>
+        
+        <action name="updateStage2" class="com.bed.action.UpdateStageAction2">
+        	<result name="success" type="chain">showTest</result>
+        	<result name="fail" type="chain">updateStage</result>
+        	<result name="login">/login.jsp</result>
+        </action>
+        
+        <action name="deleteExperiment" class="com.bed.action.DeleteExperimentAction">
+        	<result name="success" type="chain">showExperiment</result>
+        	<result name="fail" type="chain">showExperiment</result>
+        	<result name="login">/login.jsp</result>
         </action>
      </package>
 </struts>

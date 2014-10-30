@@ -11,6 +11,10 @@ public class Experiment {
 	private String completedTime; //数据实际结束传输时间
 	private String state;         //数据传输状态
 	private String submit;
+	private int stageNumber;
+	private int completeNumber;
+	private int allNumber;
+	private int percentage;
 	public long getExperimentId(){
 		return this.experimentId;
 	}
@@ -51,6 +55,18 @@ public class Experiment {
 	public String getSubmit(){
 		return this.submit;
 	}
+	public int getStageNumber(){
+		return this.stageNumber;
+	}
+	public int getCompleteNumber(){
+		return this.completeNumber;
+	}
+	public int getAllNumber(){
+		return this.allNumber;
+	}
+	public int getPercentage(){
+		return this.percentage;
+	}
 	public void setTimeStart(String timeStart){   //设置数据设定开始时间
 		this.timeStart=timeStart;
 	}
@@ -67,10 +83,21 @@ public class Experiment {
 		this.completedTime=completedTime;
 	}
 	public void setState(String state){         //设置数据传输状态
-	
 		this.state=state;
 	}
 	public void setSubmit(String submit){
 		this.submit=submit;
+	}
+	public void setStageNumber(int stageNumber){
+		this.stageNumber=stageNumber;
+	}
+	public void setCompleteNumber(int completeNumber){
+		this.completeNumber=completeNumber;
+	}
+	public void setAllNumber(int allNumber){
+		this.allNumber=allNumber;
+	}
+	public void setPercentage(int percentage){
+		this.percentage=percentage;
 	}
 }

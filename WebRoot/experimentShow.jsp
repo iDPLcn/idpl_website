@@ -15,7 +15,7 @@
 	<meta name="HandheldFriendly" content="True" />
 	<meta name="MobileOptimized" content="320" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-
+	
 	<!--// OPTIONAL & CONDITIONAL CSS FILES //-->   
 	<!-- date picker css -->
 	<link rel="stylesheet" href="css/datepicker.css?v=1" />
@@ -86,7 +86,9 @@
 	<link rel="apple-touch-startup-image" href="img/splash/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)" />
 	<link rel="apple-touch-startup-image" href="img/splash/iphone.png" media="screen and (max-device-width: 320px)" />
 	
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+</head>
 
   <body>
   	<!-- .height-wrapper -->
@@ -221,31 +223,22 @@
 							<div class="row-fluid">
 								<article class="span12">
 									<!-- new widget -->
-									<div class="jarviswidget jarviswidget-sortable" data-widget-deletebutton="false" data-widget-editbutton="false" role="widget">
+									<div class="jarviswidget jarviswidget-sortable" data-widget-deletebutton="false" role="widget">
 									    <header>
 									        <h2>${experiment.experimentName}</h2>                           
 									    </header>
 									    <!-- wrap div -->
 									    <div class="content">
 									    
-									        <%-- <div class="jarviswidget-editbox">
-									            <div>
-									                <label>Title:</label>
-									                <input type="text" />
-									            </div>
-									            <div>
-									                <label>Styles:</label>
-									                <span data-widget-setstyle="purple" class="purple-btn"></span>
-									                <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
-									                <span data-widget-setstyle="green" class="green-btn"></span>
-									                <span data-widget-setstyle="yellow" class="yellow-btn"></span>
-									                <span data-widget-setstyle="orange" class="orange-btn"></span>
-									                <span data-widget-setstyle="pink" class="pink-btn"></span>
-									                <span data-widget-setstyle="red" class="red-btn"></span>
-									                <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
-									                <span data-widget-setstyle="black" class="black-btn"></span>
-									            </div>
-									        </div> --%>
+									        <div class="jarviswidget-editbox">
+									            <div style="text-align:right">
+													<div class="btn-group">
+														<a href="deleteExperiment?experimentId=${experiment.experimentId}"><button type="button" class="btn medium btn-danger"><i class="cus-bin-closed"></i> Delete</button></a>
+														<!-- <a href="showExperiment"><button type="button" class="btn medium"><i class="cus-arrow-refresh"></i> Refresh</button></a> -->
+													</div>
+												</div>
+												
+									        </div>
             
 									        <div class="inner-spacer"> 
 									        <!-- content goes here -->
@@ -257,7 +250,9 @@
 																<th>Start Time</th>
 																<th>End Time</th>
 																<th>Date</th>
-																<th>Submit</th>
+																<th>Stage</th>
+																<!-- <th>Submit</th> -->
+																<th>Status</th>
 															</tr>
 														</thead>
 														<tbody>
@@ -266,13 +261,23 @@
 																<td>${experiment.timeStart}</td>
 																<td>${experiment.timeEnd}</td>
 																<td>${experiment.date}</td>
-																<td><a href="showStage?experimentId=${experiment.experimentId}">${experiment.submit}</a></td>
+																<td>${experiment.stageNumber}</td>
+																<s:if test="%{#experiment.submit=='YES'}">
+																<%-- <td><a href="showStage?experimentId=${experiment.experimentId}">${experiment.submit}</a></td> --%>
+																<td><a href="showStage?experimentId=${experiment.experimentId}">${experiment.state}</a></td>
+																</s:if>
+																<s:if test="%{#experiment.submit=='NO'}">
+																<%-- <td><a href="showTest?experimentId=${experiment.experimentId}">${experiment.submit}</a></td> --%>
+																<td><a href="showTest?experimentId=${experiment.experimentId}">Not Submit</a></td>
+																</s:if>
+																
 															</tr>
 														</tbody>
 												</table>
-										        <div class="progress active progress-striped">
-                                                                <div class="bar" style="width: 67%; ">67%</div>
-                                                            </div>	
+										        <!-- <div class="progress active progress-striped">
+                                                    <div class="bar" style="width: 67%; ">67%</div>
+                                                </div> -->
+                                                <div class="progress active progress-striped value"><div class="bar" data-percentage="79" data-amount-part="${experiment.completeNumber}" data-amount-total="${experiment.allNumber}" style="width:${experiment.percentage}%;">${experiment.completeNumber} / ${experiment.allNumber}</div></div>
 										    </div>
 										    <!-- end content-->
 									    </div>

@@ -1,9 +1,9 @@
 package com.bed.dao;
 import java.sql.*;
 public class DataBaseConnection {	
-	private String url="";
-	private static final String user="";
-	private static final String password="";
+	private String url="jdbc:mysql://115.25.138.209:3306/cac";
+	private static final String user="idpl";
+	private static final String password="idpl@jsi";
 	Connection conn=null;
 	public DataBaseConnection(String TableName) throws Exception{
 		try{
