@@ -167,14 +167,14 @@
 							</li>
 							<li class="">
 								<a href="javascript:void(0)"><i class="icon-user"></i>Information<span class="badge">2</span></a>
-								<ul>
+								<!-- <ul>
 									<li>
 										<a href="javascript:void(0)">Query</a>
 									</li>
 									<li>
 										<a href="javascript:void(0)">Update</a>
 									</li>
-								</ul>
+								</ul> -->
 							</li>
 							
 						</ul>

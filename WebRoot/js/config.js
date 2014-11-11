@@ -1836,6 +1836,9 @@
 		if ($('#datepicker-js').length){
 			$('#datepicker-js, #datepicker-js-2').datepicker()
 		}// end if
+		if ($('#datepicker-js1').length){
+			$('#datepicker-js1, #datepicker-js-2').datepicker()
+		}// end if
 	}	
 	
 	/* end setup_datepicker_demo */
@@ -1935,15 +1938,15 @@
 				 
 			$( "#slider-range-min" ).slider({
 		            range: "min",
-		            value: 1,
-		            min: 1,
-		            max: 1023, 
+		            value: 5,
+		            min: 5,
+		            max: 200, 
 		            slide: function( event, ui ) {
-		                $( "#amount2" ).val( ui.value );
+		                $( "#amount2" ).val( ui.value + "G");
 		                $('#slider-range-min .ui-slider-handle:first').html('<div class="tooltip top slider-tip"><div class="tooltip-arrow"></div><div class="tooltip-inner">' + ui.value + '</div></div>');
 		            }
 		        });
-		    $("#amount2").val( $( "#slider-range-min" ).slider("value"));
+		    $("#amount2").val( $( "#slider-range-min" ).slider("value") + "G");
 			
 		    $( "#slider-range-min2" ).slider({
 	            range: "min",

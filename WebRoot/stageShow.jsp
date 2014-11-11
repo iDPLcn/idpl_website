@@ -167,14 +167,14 @@
 							</li>
 							<li class="">
 								<a href="javascript:void(0)"><i class="icon-user"></i>Information<span class="badge">2</span></a>
-								<ul>
+								<!-- <ul>
 									<li>
 										<a href="javascript:void(0)">Query</a>
 									</li>
 									<li>
 										<a href="javascript:void(0)">Update</a>
 									</li>
-								</ul>
+								</ul> -->
 							</li>
 							
 						</ul>
@@ -240,6 +240,7 @@
 																<th>Source</th>
 																<th>Destination</th>
 																<th>Date Size</th>
+																<th>Repeat</th>
 																<th>Number</th>
 																<th>Parallel</th>
 															</tr>
@@ -251,6 +252,7 @@
 																<td>${stage.dataSource}</td>
 																<td>${stage.dataDestination}</td>
 																<td>${stage.dataSize}</td>
+																<td>${stage.repeat}</td>
 																<td>${stage.number}</td>
 																<td>${stage.parallel}</td>
 															</tr>
@@ -261,11 +263,21 @@
 			                                    <div class="progress-stats">
 			                                        <div class="widget-content-padding">
 			                                            <div class="semi-block">
-			                                                <strong>Status</strong><strong class="pull-right">${stage.percentage}%</strong>
+			                                           	 	<s:if test="%{#stage.state=='Running'||#stage.state=='Completed'||#stage.state=='Removed'}">
+			                                                <strong>Status</strong><strong class="pull-right">${stage.state} : ${stage.percentage}%</strong>
 			                                                <div class="progress progress-success value"><div class="bar" data-percentage="79" data-amount-part="${stage.repeatPart}" data-amount-total="${stage.repeat}" style="width:${stage.percentage}%;">${stage.repeatPart} / ${stage.repeat}</div></div>
+			                                                </s:if>
+			                                                <s:if test="%{#stage.state=='Idle'||#stage.state=='Waiting'||#stage.state=='IdleOrWaitingRemoved'}">
+			                                                <strong>Status</strong><strong class="pull-right">${stage.state}</strong>
+			                                                </s:if>
+			                                                
 			                                            </div>
 			                                        </div>
-			                                    </div>		
+			                                    </div>
+			                                    <s:if test="%{#stage.state=='Running'||#stage.state=='Completed'||#stage.state=='Removed'}">
+			                                    <%-- <iframe width="100%" height="550" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://115.25.138.209:8080/perfsonar/chart.html?type=${stage.protocol}&src=${stage.dataSource}&dst=${stage.dataDestination}&time_start=${stage.startRunning}&time_end=${stage.completedTime}" class="img-responsive" alt="Responsive image"></iframe> --%>
+			                                    <iframe width="100%" height="550" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://115.25.138.244:11401/highcharts/chart.html?type=${stage.protocol}&src=${stage.dataSource}&dst=${stage.dataDestination}&time_start=${stage.startRunning}&time_end=${stage.completedTime}" class="img-responsive" alt="Responsive image"></iframe>
+			                                   	</s:if>	
 										    </div>
 										    <!-- end content-->
 									    </div>

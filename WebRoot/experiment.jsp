@@ -167,14 +167,14 @@
 							</li>
 							<li class="">
 								<a href="javascript:void(0)"><i class="icon-user"></i>Information<span class="badge">2</span></a>
-								<ul>
+								<!-- <ul>
 									<li>
 										<a href="javascript:void(0)">Query</a>
 									</li>
 									<li>
 										<a href="javascript:void(0)">Update</a>
 									</li>
-								</ul>
+								</ul> -->
 							</li>
 							
 						</ul>
@@ -238,6 +238,14 @@
 									    <div>
        
 									        <div class="inner-spacer"> 
+									        
+										        <s:if test="note!=null">
+										        	<div class="widget alert alert-warning adjusted">
+														<button class="close" data-dismiss="alert">×</button>
+														<i class="cus-exclamation-octagon-fram"></i>
+														<strong>ALERT:</strong> <strong>${note}</strong>
+													</div>
+										        </s:if>
 									        <!-- content goes here -->
 												<form class="form-horizontal themed" id="uislider-demo" action="experiment"  method="post" novalidate="novalidate">
 													<fieldset>
@@ -252,14 +260,14 @@
 															<label class="control-label">Time (Start)</label>
 															<div class="controls">
 																
-																<div class="input-append date" id="datepicker-js" data-date-format="yyyy-mm-dd">
-																	<input id="timeStart_date" name="timeStart_date" class="datepicker-input" size="16" type="text" value="" placeholder="Select a date" />
+																<div class="input-append date" id="datepicker-js" data-date-format="yyyy/mm/dd">
+																	<input id="timeStart_date" name="timeStart_date" class="datepicker-input" size="16" type="text" value="" placeholder="Select a date"/>
 																	<span class="add-on"><i class="cus-calendar-2"></i></span>
 																</div>
 																
 																
 																<div class="input-append bootstrap-timepicker-component">
-														           	<input id="timeStart_time" name="timeStart_time" type="text" class="timepicker-input" value="" />
+														           	<input id="timeStart_time" name="timeStart_time" type="text" class="timepicker-input" value=""/>
 														            <span class="add-on"><i class="cus-clock"></i></span>
 														        </div>
 																
@@ -270,7 +278,7 @@
 															<label class="control-label">Time (End)</label>
 															<div class="controls">
 																
-																<div class="input-append date" id="datepicker-js" data-date-format="yyyy-mm-dd">
+																<div class="input-append date" id="datepicker-js1" data-date-format="yyyy/mm/dd">
 																	<input id="timeEnd_date" name="timeEnd_date" class="datepicker-input" size="16" type="text" value="" placeholder="Select a date" />
 																	<span class="add-on"><i class="cus-calendar-2"></i></span>
 																</div>
@@ -283,17 +291,20 @@
 																
 															</div>
 														</div>
-
+														<input type="hidden" id="timeStartUnixtime" name="timeStartUnixtime" value="" /> 
+														<input type="hidden" id="timeEndUnixtime" name="timeEndUnixtime" value="" />
+														<input type="hidden" id="createUnixtime" name="createUnixtime" value=""/>
 														<div class="form-actions">
 															<button type="reset" class="btn medium btn-danger">
 																Cancel
 															</button>
-															<button type="submit" class="btn medium btn-primary">
+															<button type="submit" class="btn medium btn-primary" onclick="getCurrentTime()">
 																Continue
 															</button>
 														</div>
 													</fieldset>
 												</form>
+												
 										    </div>
 										    <!-- end content-->
 									    </div>
@@ -455,7 +466,7 @@
     <!-- DO NOT REMOVE: Theme Config file -->
     <script src="js/config.js"></script>
     
-    <%-- <script src="js/dataplace.js"></script> --%>
+    <script src="js/dataplace.js"></script>
     
     <!-- d3 library placed at the bottom for better performance -->
     <!-- DISABLED  <script src="js/include/d3.v3.min.js"></script> -->

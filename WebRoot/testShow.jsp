@@ -167,14 +167,14 @@
 							</li>
 							<li class="">
 								<a href="javascript:void(0)"><i class="icon-user"></i>Information<span class="badge">2</span></a>
-								<ul>
+								<!-- <ul>
 									<li>
 										<a href="javascript:void(0)">Query</a>
 									</li>
 									<li>
 										<a href="javascript:void(0)">Update</a>
 									</li>
-								</ul>
+								</ul> -->
 							</li>
 							
 						</ul>
@@ -225,7 +225,9 @@
 							<div class="btn-group">
 								<a href="add?experimentId=${experimentId}"><button type="button" class="btn medium"><i class="cus-add"></i> Add Stages</button></a>
 								<a href="showTest?experimentId=${experimentId}"><button type="button" class="btn medium"><i class="cus-arrow-refresh"></i> Refresh</button></a>
+								<s:if test="experimentList!=null">
 								<a href="submitExperiment?experimentId=${experimentId}"><button type="button" class="btn medium"><i class="cus-accept"></i> Submit</button></a>
+								</s:if>
 							</div>
 						</div>
 						<!-- invoice end -->
@@ -349,7 +351,7 @@
 														Delete
 													</button></a>
 													<a href="updateStage?recordId=${stage.recordId}&experimentId=${experimentId}"><button class="btn medium btn-primary">
-														Update
+														Edit
 													</button></a>
 												</div>
 										    </div>

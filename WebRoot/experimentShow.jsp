@@ -90,7 +90,7 @@
 
 </head>
 
-  <body>
+  <body onload="loadtime()">
   	<!-- .height-wrapper -->
 	<div class="height-wrapper">
 		
@@ -169,14 +169,14 @@
 							</li>
 							<li class="">
 								<a href="javascript:void(0)"><i class="icon-user"></i>Information<span class="badge">2</span></a>
-								<ul>
+								<!-- <ul>
 									<li>
 										<a href="javascript:void(0)">Query</a>
 									</li>
 									<li>
 										<a href="javascript:void(0)">Update</a>
 									</li>
-								</ul>
+								</ul> -->
 							</li>
 							
 						</ul>
@@ -249,7 +249,7 @@
 																<th>Experiment name</th>
 																<th>Start Time</th>
 																<th>End Time</th>
-																<th>Date</th>
+																<th>Create Time</th>
 																<th>Stage</th>
 																<!-- <th>Submit</th> -->
 																<th>Status</th>
@@ -258,9 +258,9 @@
 														<tbody>
 															<tr>
 																<td>${experiment.experimentName}</td>
-																<td>${experiment.timeStart}</td>
-																<td>${experiment.timeEnd}</td>
-																<td>${experiment.date}</td>
+																<td>${experiment.startRunning}</td>
+																<td>${experiment.completedTime}</td>
+																<td>${experiment.timeCreate}</td>
 																<td>${experiment.stageNumber}</td>
 																<s:if test="%{#experiment.submit=='YES'}">
 																<%-- <td><a href="showStage?experimentId=${experiment.experimentId}">${experiment.submit}</a></td> --%>
@@ -450,6 +450,7 @@
     <!-- DO NOT REMOVE: Theme Config file -->
     <script src="js/config.js"></script>
     
+    <script src="js/experimentShow.js"></script>
     <!-- d3 library placed at the bottom for better performance -->
     <!-- DISABLED  <script src="js/include/d3.v3.min.js"></script> -->
     <!-- DISABLED  <script src="js/include/adv_charts/d3-chart-1.js"></script> -->

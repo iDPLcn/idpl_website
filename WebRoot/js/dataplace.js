@@ -40,6 +40,28 @@ function receiver_change(){
 	        } 
 	     }  
 }
+function getCurrentTime(){
+	var timeStart_date=document.getElementById("timeStart_date").value;
+	var timeStart_time=document.getElementById("timeStart_time").value;
+	var timeEnd_date=document.getElementById("timeEnd_date").value;
+	var timeEnd_time=document.getElementById("timeEnd_time").value;
+	var timeStartUnixtime=document.getElementById("timeStartUnixtime");
+	var timeEndUnixtime=document.getElementById("timeEndUnixtime");
+	var createUnixtime=document.getElementById("createUnixtime");
+	if(timeStart_date!=""&&timeStart_time!="")
+	{
+		timeStartUnixtime.value=Date.parse(timeStart_date+" "+timeStart_time)/1000;	
+	}
+	else
+		timeStartUnixtime.value=null;
+	if(timeEnd_date!=""&&timeEnd_time!="")
+	{
+		timeEndUnixtime.value=Date.parse(timeEnd_date+" "+timeEnd_time)/1000;	
+	}
+	else
+		timeEndUnixtime.value=null;
+	createUnixtime.value = Date.parse(new Date())/1000; 
+}
 /* format hour */
 /*
 function input_h(warnning,time){

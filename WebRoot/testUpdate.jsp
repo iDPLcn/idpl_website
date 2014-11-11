@@ -167,14 +167,14 @@
 							</li>
 							<li class="">
 								<a href="javascript:void(0)"><i class="icon-user"></i>Information<span class="badge">2</span></a>
-								<ul>
+								<!-- <ul>
 									<li>
 										<a href="javascript:void(0)">Query</a>
 									</li>
 									<li>
 										<a href="javascript:void(0)">Update</a>
 									</li>
-								</ul>
+								</ul> -->
 							</li>
 							
 						</ul>
@@ -318,7 +318,7 @@
 																	<p class="info-block">		
 																		<input type="text" name="dataNumber" id="amount2" class="ui-display-label"/> 
 																	</p>
-																	<label class="radio inline">
+																	<!-- <label class="radio inline">
 																	  <input type="radio" name="dataSize" id="optionsRadios4" value="K" checked="" />
 																	  KB
 																	</label>
@@ -329,7 +329,7 @@
 																	<label class="radio inline">
 																	  <input type="radio" name="dataSize" id="optionsRadios6" value="G"  />
 																	  GB
-																	</label>
+																	</label> -->
 																</div>
 															<!-- <label class="control-label">Number</label> -->
 															<div class="controls">																  
@@ -406,8 +406,11 @@
 														</div> 
 														--%>
 														<div class="form-actions">
+															<a href="showTest?experimentId=${experimentId}"><button type="button" class="btn medium btn-danger">
+																Cancel
+															</button></a>
 															<button type="submit" class="btn medium btn-primary">
-																Submit
+																Save
 															</button>
 														</div>
 													</fieldset>
